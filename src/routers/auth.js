@@ -15,7 +15,6 @@ import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { updateUserValidationSchema } from '../validation/auth.js';
 import {
-  registerUserSchema,
   loginUserSchema,
   requestResetEmailSchema,
   resetPasswordSchema,
@@ -28,7 +27,7 @@ const router = Router();
 
 router.post(
   '/register',
-  validateBody(registerUserSchema),
+  validateBody(loginUserSchema),
   ctrlWrapper(registerUserCtrl),
 );
 

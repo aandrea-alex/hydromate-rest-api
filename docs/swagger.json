@@ -41,7 +41,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/registerRequest"
+                "$ref": "#/components/schemas/authRequest"
               }
             }
           }
@@ -68,22 +68,8 @@
                       "example": "Successfully registered and logged in the user!"
                     },
                     "data": {
-                      "type": "object",
-                      "required": [
-                        "user",
-                        "accessToken"
-                      ],
-                      "properties": {
-                        "user": {
-                          "description": "Short user info",
-                          "$ref": "#/components/schemas/registerResponse"
-                        },
-                        "accessToken": {
-                          "description": "Access token",
-                          "type": "string",
-                          "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
-                        }
-                      }
+                      "description": "Short user info",
+                      "$ref": "#/components/schemas/authResponse"
                     }
                   }
                 }
@@ -124,7 +110,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/loginRequest"
+                "$ref": "#/components/schemas/authRequest"
               }
             }
           }
@@ -159,7 +145,7 @@
                       "properties": {
                         "user": {
                           "description": "Short user info",
-                          "$ref": "#/components/schemas/registerResponse"
+                          "$ref": "#/components/schemas/authResponse"
                         },
                         "accessToken": {
                           "description": "Access token",
@@ -294,14 +280,9 @@
                     "data": {
                       "type": "object",
                       "required": [
-                        "user",
                         "accessToken"
                       ],
                       "properties": {
-                        "user": {
-                          "description": "Short user info",
-                          "$ref": "#/components/schemas/registerResponse"
-                        },
                         "accessToken": {
                           "type": "string",
                           "description": "Newly issued access token.",
@@ -965,34 +946,26 @@
       }
     },
     "schemas": {
-      "registerRequest": {
+      "authRequest": {
         "type": "object",
         "required": [
-          "name",
           "email",
           "password"
         ],
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "User's name",
-            "example": "John Doe"
-          },
           "email": {
             "type": "string",
-            "description": "User's email",
             "format": "email",
             "example": "user@example.com"
           },
           "password": {
             "type": "string",
-            "description": "User's password",
             "format": "password",
             "example": "Password123!"
           }
         }
       },
-      "registerResponse": {
+      "authResponse": {
         "type": "object",
         "required": [
           "_id",
@@ -1014,25 +987,6 @@
             "description": "User's email",
             "type": "string",
             "example": "user@example.com"
-          }
-        }
-      },
-      "loginRequest": {
-        "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email",
-            "example": "user@example.com"
-          },
-          "password": {
-            "type": "string",
-            "format": "password",
-            "example": "Password123!"
           }
         }
       },

@@ -10,7 +10,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../../components/schemas/users/registerRequest.yaml'
+        $ref: '../../../components/schemas/users/authRequest.yaml'
 responses:
   '201':
     description: >
@@ -32,18 +32,8 @@ responses:
               type: string
               example: Successfully registered and logged in the user!
             data:
-              type: object
-              required:
-                - user
-                - accessToken
-              properties:
-                user:
-                  description: Short user info
-                  $ref: '../../../components/schemas/users/registerResponse.yaml'
-                accessToken:
-                  description: Access token
-                  type: string
-                  example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
+              description: Short user info
+              $ref: '../../../components/schemas/users/authResponse.yaml'
     headers:
       Set-Cookie:
         description: >

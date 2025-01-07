@@ -42,12 +42,8 @@ responses:
             data:
               type: object
               required:
-                - user
                 - accessToken
               properties:
-                user:
-                  description: Short user info
-                  $ref: '../../../components/schemas/users/registerResponse.yaml'
                 accessToken:
                   type: string
                   description: Newly issued access token.

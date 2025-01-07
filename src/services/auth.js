@@ -29,34 +29,19 @@ export const createSession = () => {
 };
 
 export const registerUser = async (payload) => {
-  const existedUser = await UsersCollection.findOne({ email: payload.email });
-  if (existedUser) throw createHttpError(409, 'Email in use');
+  const email = payload.email;
+  const nameFromEmail = email.split('@')[0];
 
+  const user = await UsersCollection.findOne({ email });
+
+  if (user) throw createHttpError(409, 'Email in use');
   const encryptedPassword = await bcrypt.hash(payload.password, 10);
 
-  const user = await UsersCollection.create({
+  return await UsersCollection.create({
+    name: nameFromEmail,
     ...payload,
     password: encryptedPassword,
   });
-
-  const tokens = createSession();
-  const session = await SessionsCollection.create({
-    userId: user._id,
-    ...tokens,
-  });
-
-  return {
-    user: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-    },
-    session: {
-      _id: session._id,
-      accessToken: session.accessToken,
-      refreshToken: session.refreshToken,
-    },
-  };
 };
 
 export const loginUser = async (payload) => {

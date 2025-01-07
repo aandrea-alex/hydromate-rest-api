@@ -27,14 +27,12 @@ export const setupSession = (res, session) => {
 };
 
 export const registerUserCtrl = async (req, res) => {
-  const { user, session } = await registerUser(req.body);
-
-  setupSession(res, session);
+  const user = await registerUser(req.body);
 
   res.status(201).json({
     status: 201,
     message: 'Successfully registered a user!',
-    data: { user, accessToken: session.accessToken },
+    data: { _id: user._id, name: user.name, email: user.email },
   });
 };
 

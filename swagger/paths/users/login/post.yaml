@@ -10,7 +10,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: '../../../components/schemas/users/loginRequest.yaml'
+        $ref: '../../../components/schemas/users/authRequest.yaml'
 responses:
   '200':
     description: User authenticated successfully. Cookies are set in the response.
@@ -37,7 +37,7 @@ responses:
               properties:
                 user:
                   description: Short user info
-                  $ref: '../../../components/schemas/users/registerResponse.yaml'
+                  $ref: '../../../components/schemas/users/authResponse.yaml'
                 accessToken:
                   description: Access token
                   type: string

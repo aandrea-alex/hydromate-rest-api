@@ -1,23 +1,5 @@
 import Joi from 'joi';
 
-export const registerUserSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required().messages({
-    'string.base': 'Name must be a string.',
-    'string.min': 'Name must be at least 3 characters long.',
-    'string.max': 'Name must be at most 20 characters long.',
-    'any.required': 'Name is required.',
-  }),
-  email: Joi.string().email().required().messages({
-    'string.base': 'Email must be a string.',
-    'string.email': 'Please provide a valid email address.',
-    'any.required': 'Email is required.',
-  }),
-  password: Joi.string().required().messages({
-    'string.base': 'Password must be a string.',
-    'any.required': 'Password is required.',
-  }),
-});
-
 export const loginUserSchema = Joi.object({
   email: Joi.string().email().required().messages({
     'string.base': 'Email must be a string.',
@@ -46,16 +28,18 @@ export const loginWithGoogleOAuthSchema = Joi.object({
 });
 
 export const updateUserValidationSchema = Joi.object({
-  name: Joi.string()
-    .min(2)
-    .max(100)
-    .description("User's name")
-    .example('John Doe'),
+  name: Joi.string().min(2).max(20).messages({
+    'string.base': 'Name must be a string.',
+    'string.min': 'Name must be at least 3 characters long.',
+    'string.max': 'Name must be at most 15 characters long.',
+  }),
 
-  email: Joi.string()
-    .email()
-    .description("User's email")
-    .example('user@example.com'),
+  email: Joi.string().email().required().messages({
+    'string.base': 'Email must be a string.',
+    'string.email': 'Please provide a valid email address.',
+    'any.required': 'Email is required.',
+    'string.empty': 'Email cannot be empty.',
+  }),
 
   gender: Joi.string()
     .valid('male', 'female')
@@ -77,6 +61,6 @@ export const updateUserValidationSchema = Joi.object({
   waterNorm: Joi.number()
     .min(0)
     .max(10)
-    .description('Daily water intake norm (L)')
+    .description('Daily water intake norm (mL)')
     .example(1.8),
-}).min(1);
+});
