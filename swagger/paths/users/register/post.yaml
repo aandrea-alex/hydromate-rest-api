@@ -1,0 +1,62 @@
+tags:
+  - Users
+summary: User registration and login
+operationId: registerUser
+description: >
+  Registers a new user and logs them in. If the registration is successful, the server
+  returns an access token in the response body and sets `refreshToken` and `sessionId` as cookies.
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '../../../components/schemas/users/registerRequest.yaml'
+responses:
+  '201':
+    description: >
+      User registered and authenticated successfully. The response includes an access token,
+      and the server sets cookies for session management (`refreshToken` and `sessionId`).
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered and logged in the user!
+            data:
+              type: object
+              required:
+                - user
+                - accessToken
+              properties:
+                user:
+                  description: Short user info
+                  $ref: '../../../components/schemas/users/registerResponse.yaml'
+                accessToken:
+                  description: Access token
+                  type: string
+                  example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
+    headers:
+      Set-Cookie:
+        description: >
+          Cookies set by the server include `refreshToken` and `sessionId`. These cookies are
+          HttpOnly and secure, ensuring they cannot be accessed via JavaScript.
+        schema:
+          type: string
+          example: >
+            refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; HttpOnly; Path=/;
+            sessionId=abc123session456; HttpOnly; Path=/;
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '409':
+    $ref: '../../../components/responses/409.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
