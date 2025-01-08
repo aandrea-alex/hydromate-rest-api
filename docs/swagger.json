@@ -770,7 +770,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successfully found water-logs for the day!",
+            "description": "Successfully found water-logs for the month!",
             "content": {
               "application/json": {
                 "schema": {
@@ -792,7 +792,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/waterResponse"
+                        "$ref": "#/components/schemas/waterForMonthResponse"
                       }
                     }
                   }
@@ -1172,6 +1172,32 @@
             "type": "string",
             "example": "2025-01-06T10:00:00.000Z",
             "default": "current date"
+          }
+        }
+      },
+      "waterForMonthResponse": {
+        "type": "object",
+        "required": [
+          "day",
+          "totalWater",
+          "percentage"
+        ],
+        "properties": {
+          "day": {
+            "description": "Date of water-log",
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-01-06T10:00:00.000Z"
+          },
+          "totalWater": {
+            "description": "Water volume for the day in milliliters (mL)",
+            "type": "number",
+            "example": 1500
+          },
+          "percentage": {
+            "description": "Percentage of daily water intake goal achieved",
+            "type": "number",
+            "example": 75
           }
         }
       }

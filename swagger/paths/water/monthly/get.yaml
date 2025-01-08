@@ -16,7 +16,7 @@ parameters:
 
 responses:
   '200':
-    description: 'Successfully found water-logs for the day!'
+    description: 'Successfully found water-logs for the month!'
     content:
       application/json:
         schema:
@@ -35,7 +35,7 @@ responses:
             data:
               type: array
               items:
-                $ref: '../../../components/schemas/water/waterResponse.yaml'
+                $ref: '../../../components/schemas/water/waterForMonthResponse.yaml'
 
   '401':
     $ref: '../../../components/responses/401.yaml'
