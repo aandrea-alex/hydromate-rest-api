@@ -33,9 +33,9 @@
         "tags": [
           "Users"
         ],
-        "summary": "User registration and login",
+        "summary": "User registration",
         "operationId": "registerUser",
-        "description": "Registers a new user and logs them in. If the registration is successful, the server returns an access token in the response body and sets `refreshToken` and `sessionId` as cookies.\n",
+        "description": "Registers a new user.\n",
         "security": [],
         "requestBody": {
           "content": {
@@ -48,7 +48,7 @@
         },
         "responses": {
           "201": {
-            "description": "User registered and authenticated successfully. The response includes an access token, and the server sets cookies for session management (`refreshToken` and `sessionId`).\n",
+            "description": "User registered and authenticated successfully.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -65,22 +65,13 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully registered and logged in the user!"
+                      "example": "Successfully registered!"
                     },
                     "data": {
                       "description": "Short user info",
                       "$ref": "#/components/schemas/authResponse"
                     }
                   }
-                }
-              }
-            },
-            "headers": {
-              "Set-Cookie": {
-                "description": "Cookies set by the server include `refreshToken` and `sessionId`. These cookies are HttpOnly and secure, ensuring they cannot be accessed via JavaScript.\n",
-                "schema": {
-                  "type": "string",
-                  "example": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; HttpOnly; Path=/; sessionId=abc123session456; HttpOnly; Path=/;\n"
                 }
               }
             }
