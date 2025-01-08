@@ -1,16 +1,12 @@
 import { WaterCollection } from '../db/models/water.js';
 
 export const getWaterLogsByDate = async (userId, filter = {}) => {
-  const { minDate, maxDate } = filter;
+  const { date } = filter;
 
   const waterLogsQuery = WaterCollection.find({ userId });
 
-  if (minDate) {
-    waterLogsQuery.where('date').gte(minDate);
-  }
-
-  if (maxDate) {
-    waterLogsQuery.where('date').lte(maxDate);
+  if (date) {
+    waterLogsQuery.where('date').gte(date.$gte).lte(date.$lte);
   }
 
   const waterLogs = await waterLogsQuery.exec();

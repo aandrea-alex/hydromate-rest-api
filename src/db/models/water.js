@@ -13,9 +13,9 @@ const waterSchema = new Schema(
       min: 0.1,
     },
     date: {
-      type: Date,
+      type: String,
       required: true,
-      default: () => new Date(),
+      default: () => new Date().toISOString(),
     },
   },
   { timestamps: true, versionKey: false, collection: 'water' },
