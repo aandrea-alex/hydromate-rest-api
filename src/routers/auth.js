@@ -9,7 +9,7 @@ import {
   getGoogleOAuthUrlCtrl,
   loginWithGoogleCtrl,
   getCurrentUserCtrl,
-  updateContactCtrl,
+  updateUserCtrl,
 } from '../controllers/auth.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
@@ -68,7 +68,7 @@ router.patch(
   authenticate,
   upload.single('avatar'),
   validateBody(updateUserValidationSchema),
-  ctrlWrapper(updateContactCtrl),
+  ctrlWrapper(updateUserCtrl),
 );
 
 export default router;

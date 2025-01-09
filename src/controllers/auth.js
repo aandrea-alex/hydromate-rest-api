@@ -130,7 +130,7 @@ export const getCurrentUserCtrl = async (req, res) => {
   });
 };
 
-export const updateContactCtrl = async (req, res) => {
+export const updateUserCtrl = async (req, res) => {
   const userId = req.user._id;
   const avatar = req.file;
 
