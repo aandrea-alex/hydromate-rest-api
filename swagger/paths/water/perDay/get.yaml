@@ -8,7 +8,7 @@ security:
 parameters:
   - in: query
     name: date
-    description: 'Date to filter water logs by day (format: YYYY-MM-DD). Defaults to the current date if not provided.'
+    description: 'Date to filter water logs by day. Defaults to the current date if not provided.'
     schema:
       type: string
       example: '2025-01-06T10:00:00.000Z'
