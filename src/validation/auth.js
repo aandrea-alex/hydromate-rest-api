@@ -34,11 +34,9 @@ export const updateUserValidationSchema = Joi.object({
     'string.max': 'Name must be at most 15 characters long.',
   }),
 
-  email: Joi.string().email().required().messages({
+  email: Joi.string().email().messages({
     'string.base': 'Email must be a string.',
     'string.email': 'Please provide a valid email address.',
-    'any.required': 'Email is required.',
-    'string.empty': 'Email cannot be empty.',
   }),
 
   gender: Joi.string()
