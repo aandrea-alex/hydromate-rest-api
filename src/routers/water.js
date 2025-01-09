@@ -21,10 +21,10 @@ router.use(authenticate);
 router.get('/', ctrlWrapper(getAllWaterLogsCtrl));
 
 // Get water logs for a specific day
-router.get('/daily', ctrlWrapper(getWaterLogsForDayCtrl));
+router.get('/per-day', ctrlWrapper(getWaterLogsForDayCtrl));
 
 // Get water logs for a specific month
-router.get('/monthly', ctrlWrapper(getWaterLogsForMonthCtrl));
+router.get('/per-month', ctrlWrapper(getWaterLogsForMonthCtrl));
 
 router.post('/', validateBody(addWaterSchema), ctrlWrapper(createWaterLogCtrl));
 router.patch(

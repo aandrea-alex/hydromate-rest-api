@@ -43,12 +43,12 @@ paths:
       $ref: ../swagger/paths/water/get.yaml
     post:
       $ref: ../swagger/paths/water/post.yaml
-  /water/daily:
+  /water/per-day:
     get:
-      $ref: ../swagger/paths/water/daily/get.yaml
-  /water/monthly:
+      $ref: ../swagger/paths/water/perDay/get.yaml
+  /water/per-month:
     get:
-      $ref: ../swagger/paths/water/monthly/get.yaml
+      $ref: ../swagger/paths/water/perMonth/get.yaml
   /water/{id}:
     patch:
       $ref: ../swagger/paths/water/{id}/patch.yaml

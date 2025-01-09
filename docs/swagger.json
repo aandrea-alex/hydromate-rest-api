@@ -678,7 +678,7 @@
         }
       }
     },
-    "/water/daily": {
+    "/water/per-day": {
       "get": {
         "tags": [
           "Water"
@@ -743,7 +743,7 @@
         }
       }
     },
-    "/water/monthly": {
+    "/water/per-month": {
       "get": {
         "tags": [
           "Water"
@@ -760,10 +760,9 @@
           {
             "in": "query",
             "name": "date",
-            "description": "Date to filter water logs by month (format: YYYY-MM-DD). Defaults to the current date if not provided.",
+            "description": "Date to filter water logs by month. Defaults to the current date if not provided.",
             "schema": {
               "type": "string",
-              "format": "date-time",
               "example": "2025-01-06T10:00:00.000Z"
             }
           }
