@@ -10,7 +10,7 @@ const waterSchema = new Schema(
     volume: {
       type: Number,
       required: true,
-      min: 0.1,
+      min: 50,
     },
     date: {
       type: String,

@@ -22,7 +22,7 @@ const usersSchema = new Schema(
     },
     waterNorm: {
       type: Number,
-      default: 2.0,
+      default: 50,
       min: 0,
     },
     avatar: {

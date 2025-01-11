@@ -12,3 +12,10 @@ const storage = multer.diskStorage({
 });
 
 export const upload = multer({ storage });
+
+export const checkAvatar = (req, res, next) => {
+  if (req.body.avatar === null || req.body.avatar === undefined) {
+    return next();
+  }
+  upload.single('avatar')(req, res, next);
+};

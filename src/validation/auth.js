@@ -57,8 +57,8 @@ export const updateUserValidationSchema = Joi.object({
     .example(1),
 
   waterNorm: Joi.number()
-    .min(0)
-    .max(10)
+    .min(50)
+    .max(5000)
     .description('Daily water intake norm (mL)')
     .example(1.8),
 });

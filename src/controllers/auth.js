@@ -144,7 +144,10 @@ export const updateUserCtrl = async (req, res) => {
     }
   }
 
-  const result = await updateUser(userId, { ...req.body, avatar: avatarUrl });
+  const payload = { ...req.body };
+  if (avatar && avatarUrl) payload.avatar = avatarUrl;
+
+  const result = await updateUser(userId, payload);
 
   if (!result) {
     throw createHttpError(404, 'User not found');
